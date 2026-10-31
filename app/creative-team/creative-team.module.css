@@ -1,0 +1,394 @@
+.hero {
+  border-bottom: 1px solid #51342d;
+  background:
+    radial-gradient(ellipse at 85% 12%, #67212773, transparent 64%),
+    linear-gradient(120deg, #100b0e, #1e0e15);
+}
+
+.heroInner {
+  padding-top: 34px;
+  padding-bottom: 75px;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 56px;
+  color: #b8a39b;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+.breadcrumb > a {
+  padding: 4px 0;
+}
+
+.breadcrumb > span:last-child {
+  color: #a4938f;
+}
+
+.heroGrid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: end;
+  gap: 90px;
+}
+
+.hero h1 {
+  margin: 0;
+  color: var(--paper);
+  font-size: clamp(68px, 7.7vw, 110px);
+  font-weight: 500;
+  line-height: 0.99;
+  letter-spacing: -0.055em;
+}
+
+.hero h1 em {
+  color: var(--gold);
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 400;
+  letter-spacing: -0.045em;
+}
+
+.heroDetails {
+  padding-bottom: 4px;
+  min-width: 0;
+}
+
+.intro {
+  max-width: 425px;
+  margin: 0 0 30px;
+  color: #d7c6be;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(22px, 2.3vw, 28px);
+  line-height: 1.5;
+  letter-spacing: -0.015em;
+}
+
+.memberLinks {
+  border-top: 1px solid #65413a;
+}
+
+.memberLinks a {
+  display: grid;
+  grid-template-columns: 25px minmax(0, 1fr) 20px;
+  align-items: center;
+  gap: 13px;
+  padding: 18px 0;
+  border-bottom: 1px solid #65413a;
+  color: #ecdfd3;
+  font-size: 14px;
+  line-height: 1.6;
+  transition: color 0.2s;
+}
+
+.memberLinks a:hover {
+  color: var(--gold-light);
+}
+
+.linkNumber {
+  color: #c79b69;
+  font-size: 10px;
+  letter-spacing: 0.05em;
+}
+
+.memberLinks svg {
+  color: var(--gold);
+  transform: rotate(90deg);
+  transition: transform 0.2s;
+}
+
+.memberLinks a:hover svg {
+  transform: rotate(90deg) translateX(3px);
+}
+
+.profiles {
+  padding-bottom: 16px;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: 0.8fr 1.5fr;
+  align-items: start;
+  gap: 88px;
+  padding: 85px 0;
+}
+
+.profile + .profile {
+  border-top: 1px solid #44332e;
+}
+
+.profileHeading {
+  min-width: 0;
+}
+
+.profileNumber {
+  display: block;
+  margin-bottom: 31px;
+  color: var(--gold-dark);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.role {
+  max-width: 320px;
+  margin: 0 0 18px;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.8;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.profileHeading h2 {
+  max-width: 360px;
+  margin: 0;
+  color: #f0e5d9;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(35px, 3.5vw, 48px);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.nameRule {
+  display: block;
+  width: 46px;
+  height: 2px;
+  margin-top: 29px;
+  background: var(--gold-dark);
+}
+
+.portrait {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin-top: 26px;
+  border: 1px solid #654737;
+  border-radius: 3px;
+  background: #171114;
+}
+
+.bio {
+  min-width: 0;
+  color: #c6b8b1;
+  font-size: 15px;
+  line-height: 1.95;
+}
+
+.bio p {
+  margin: 0 0 24px;
+}
+
+.bio p:first-child {
+  color: #e0d4ca;
+  font-size: 17px;
+  line-height: 1.85;
+}
+
+.bio p:last-child {
+  margin-bottom: 0;
+}
+
+.bio em {
+  color: #ded0c4;
+  font-style: italic;
+}
+
+.bio strong {
+  color: var(--gold-light);
+  font-weight: 600;
+}
+
+.nextChapter {
+  border-top: 1px solid #4d2930;
+  background:
+    radial-gradient(ellipse at 8% 20%, #591d2477, transparent 63%),
+    linear-gradient(120deg, #281016, #180e14 65%);
+}
+
+.nextInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 55px;
+  padding-top: 65px;
+  padding-bottom: 70px;
+}
+
+.nextInner h2 {
+  font-size: clamp(36px, 3.7vw, 52px);
+}
+
+.nextCopy {
+  max-width: 425px;
+  margin: 23px 0 0;
+  color: #c3afab;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.nextActions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  gap: 21px;
+}
+
+@media (max-width: 1100px) {
+  .heroGrid {
+    gap: 50px;
+  }
+
+  .profile {
+    grid-template-columns: 0.8fr 1.5fr;
+    gap: 50px;
+    padding: 70px 0;
+  }
+
+  .profileHeading h2 {
+    font-size: 39px;
+  }
+
+  .bio {
+    font-size: 14px;
+  }
+
+  .bio p:first-child {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 767px) {
+  .heroInner {
+    padding-top: 22px;
+    padding-bottom: 45px;
+  }
+
+  .breadcrumb {
+    gap: 10px;
+    margin-bottom: 34px;
+    font-size: 10px;
+  }
+
+  .heroGrid {
+    grid-template-columns: 1fr;
+    gap: 29px;
+  }
+
+  .hero h1 {
+    font-size: clamp(61px, 13vw, 90px);
+  }
+
+  .heroDetails {
+    padding: 0;
+  }
+
+  .intro {
+    max-width: 460px;
+    margin-bottom: 24px;
+    font-size: 22px;
+    line-height: 1.5;
+  }
+
+  .memberLinks a {
+    gap: 10px;
+    padding: 16px 0;
+    font-size: 13px;
+  }
+
+  .profiles {
+    padding-bottom: 7px;
+  }
+
+  .profile {
+    grid-template-columns: 1fr;
+    gap: 27px;
+    padding: 47px 0 49px;
+  }
+
+  .profileHeading {
+    position: static;
+  }
+
+  .profileNumber {
+    margin-bottom: 23px;
+    font-size: 28px;
+  }
+
+  .role {
+    max-width: none;
+    margin-bottom: 13px;
+    font-size: 9px;
+    letter-spacing: 0.11em;
+  }
+
+  .profileHeading h2 {
+    max-width: 460px;
+    font-size: clamp(35px, 7.8vw, 44px);
+  }
+
+  .nameRule {
+    width: 37px;
+    margin-top: 21px;
+  }
+
+  .bio {
+    font-size: 15px;
+    line-height: 1.85;
+  }
+
+  .bio p:first-child {
+    font-size: 16px;
+  }
+
+  .bio p {
+    margin-bottom: 23px;
+  }
+
+  .nextInner {
+    display: block;
+    padding-top: 47px;
+    padding-bottom: 51px;
+  }
+
+  .nextInner h2 {
+    font-size: clamp(34px, 8.4vw, 45px);
+  }
+
+  .nextCopy {
+    font-size: 13px;
+    margin-top: 20px;
+  }
+
+  .nextActions {
+    gap: 17px;
+    margin-top: 28px;
+  }
+
+  .nextActions > a:first-child {
+    gap: 19px;
+    padding-right: 18px;
+    padding-left: 18px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 374px) {
+  .memberLinks a {
+    grid-template-columns: 20px minmax(0, 1fr) 18px;
+    font-size: 12px;
+  }
+
+  .intro {
+    font-size: 21px;
+  }
+}
