@@ -1,0 +1,1 @@
+ALTER TABLE `audition_submissions` DROP COLUMN `location`;

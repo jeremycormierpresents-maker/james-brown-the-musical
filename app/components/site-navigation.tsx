@@ -6,11 +6,11 @@ import styles from "./site-navigation.module.css";
 export type ActiveSitePage = "auditions" | "creative-team";
 
 const links = [
-  { href: "/#the-musical", label: "The musical" },
+  { href: "/#the-musical", label: "The Musical" },
   { href: "/#productions", label: "Productions" },
   { href: "/creative-team", label: "Creative Team", page: "creative-team" },
   { href: "/auditions", label: "Auditions", page: "auditions" },
-  { href: "/#contact", label: "Contact us" },
+  { href: "/#contact", label: "Contact Us" },
 ] as const;
 
 export function SiteNavigation({ active }: { active?: ActiveSitePage }) {
@@ -62,7 +62,7 @@ export function SiteNavigation({ active }: { active?: ActiveSitePage }) {
       }}
     >
       <div className={styles.mobileControls}>
-        <a className={styles.mobileUpdates} href="/#updates" onClick={closeMenu}>Get updates</a>
+        <a className={styles.mobileUpdates} href="/#updates" onClick={closeMenu}>Get Updates</a>
         <button
           className={styles.menuToggle}
           type="button"
@@ -99,7 +99,7 @@ export function SiteNavigation({ active }: { active?: ActiveSitePage }) {
           </a>
         ))}
         <a className={styles.desktopUpdates} href="/#updates" onClick={closeMenu}>
-          Get updates
+          Get Updates
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
             <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>

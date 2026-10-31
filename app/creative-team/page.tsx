@@ -150,8 +150,8 @@ export default function CreativeTeamPage() {
               <p className={styles.nextCopy}>Follow the musical’s journey, or share your talent for casting consideration.</p>
             </div>
             <div className={styles.nextActions}>
-              <a className="button button-gold" href="/#updates">Get production updates <Arrow /></a>
-              <a className="text-link" href="/auditions">Submit for auditions <Arrow /></a>
+              <a className="button button-gold" href="/#updates">Get Production Updates <Arrow /></a>
+              <a className="text-link" href="/auditions">Submit for Auditions <Arrow /></a>
             </div>
           </div>
         </section>

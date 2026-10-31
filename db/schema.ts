@@ -5,10 +5,14 @@ export const rateLimits = sqliteTable("form_rate_limits", { key: text("key").pri
 
 export const auditions = sqliteTable("audition_submissions", {
   id: text("id").primaryKey(),
-  name: text("name").notNull(),
+  firstName: text("first_name").notNull(),
+  middleName: text("middle_name"),
+  lastName: text("last_name").notNull(),
   email: text("email").notNull(),
   phone: text("phone"),
-  location: text("location").notNull(),
+  city: text("city").notNull(),
+  state: text("state"),
+  country: text("country").notNull(),
   disciplines: text("disciplines", { mode: "json" }).$type<string[]>().notNull(),
   productions: text("productions", { mode: "json" }).$type<string[]>().notNull(),
   experience: text("experience"),

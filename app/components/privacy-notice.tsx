@@ -4,7 +4,7 @@ import { useRef } from "react";
 export function PrivacyNotice() {
   const ref = useRef<HTMLDialogElement>(null);
   return <>
-    <button className="privacy-trigger" type="button" onClick={() => ref.current?.showModal()}>How we use your information</button>
+    <button className="privacy-trigger" type="button" onClick={() => ref.current?.showModal()}>How We Use Your Information</button>
     <dialog className="privacy-dialog" ref={ref} aria-labelledby="privacy-heading" onClick={event => { if (event.target === ref.current) ref.current.close(); }}>
       <p className="eyebrow">Your information</p><h2 id="privacy-heading">A note about your details.</h2>
       <p><strong>When you sign up:</strong> we save your name, email address and consent so James Brown The Musical can share production updates with you.</p>

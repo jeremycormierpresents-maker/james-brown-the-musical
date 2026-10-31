@@ -11,7 +11,7 @@ export function Wordmark() {
 
 export function SiteHeader({ active }: { active?: ActiveSitePage }) {
   return <>
-    <a className="skip-link" href="#main">Skip to content</a>
+    <a className="skip-link" href="#main">Skip to Content</a>
     <header className="site-header"><div className="nav-inner">
       <a href="/#home" className="brand" aria-label="James Brown The Musical — home"><Wordmark /></a>
       <SiteNavigation active={active} />
@@ -24,7 +24,7 @@ export function SiteFooter() {
     <div className="footer-main section-shell">
       <a href="/#home" className="brand" aria-label="Back to James Brown The Musical"><Wordmark /></a>
       <p>The Godfather of Soul.<br /><span>The Legacy. The Sound. The Story.</span></p>
-      <div className="footer-links"><a href="/creative-team">Creative Team</a><a href="/auditions">Auditions</a><a href="/#contact">Contact us</a><a className="back-top" href="#main">Back to top <span aria-hidden="true">↑</span></a></div>
+      <div className="footer-links"><a href="/creative-team">Creative Team</a><a href="/auditions">Auditions</a><a href="/#contact">Contact Us</a><a className="back-top" href="#main">Back to Top <span aria-hidden="true">↑</span></a></div>
     </div>
     <div className="footer-bottom section-shell"><p>© 2026 James Brown The Musical.</p><PrivacyNotice /></div>
   </footer>;

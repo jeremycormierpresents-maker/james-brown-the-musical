@@ -96,10 +96,14 @@ export function AuditionForm() {
     const headshot = asFile(fields.get("headshot"));
     const resume = asFile(fields.get("resume"));
     const values = {
-      name: fields.get("name") ?? "",
+      firstName: fields.get("firstName") ?? "",
+      middleName: fields.get("middleName") ?? "",
+      lastName: fields.get("lastName") ?? "",
       email: fields.get("email") ?? "",
       phone: fields.get("phone") ?? "",
-      location: fields.get("location") ?? "",
+      city: fields.get("city") ?? "",
+      state: fields.get("state") ?? "",
+      country: fields.get("country") ?? "",
       disciplines: fields.getAll("disciplines"),
       productions: fields.getAll("productions"),
       experience: fields.get("experience") ?? "",
@@ -164,7 +168,7 @@ export function AuditionForm() {
   function startAgain() {
     attempt.current = null;
     setStatus("idle"); setErrors({}); setNotice(""); setReference("");
-    requestAnimationFrame(() => formRef.current?.querySelector<HTMLInputElement>("input[name='name']")?.focus());
+    requestAnimationFrame(() => formRef.current?.querySelector<HTMLInputElement>("input[name='firstName']")?.focus());
   }
 
   if (status === "success") return <div className={styles.success} tabIndex={-1} ref={successRef} role="status" aria-live="polite">
@@ -174,7 +178,7 @@ export function AuditionForm() {
     <p>Thank you for your interest in James Brown The Musical. Your audition submission and materials have been saved for casting consideration.</p>
     <div className={styles.reference}><span>Keep your submission reference</span><code>{reference}</code></div>
     <p>The production team can use your contact details to follow up about your submission.</p>
-    <button className="button button-outline" type="button" onClick={startAgain}>Submit another application <Arrow /></button>
+    <button className="button button-outline" type="button" onClick={startAgain}>Submit Another Application <Arrow /></button>
   </div>;
 
   return <form className={styles.form} ref={formRef} onSubmit={submit} method="post" action="/api/auditions" encType="multipart/form-data" noValidate aria-label="Audition submission" aria-busy={isPending}>
@@ -183,29 +187,37 @@ export function AuditionForm() {
     <fieldset className={styles.controls} disabled={isPending}>
       <section className={styles.section} aria-labelledby="audition-about-heading">
         <div className={styles.sectionHeading}><span aria-hidden="true">01</span><h3 id="audition-about-heading">About you</h3></div>
+        <div className={styles.tripleGrid}>
+          <div className="field"><label htmlFor="audition-firstName">First Name <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-firstName" name="firstName" type="text" autoComplete="given-name" placeholder="First name" maxLength={60} required aria-invalid={!!errors.firstName} aria-describedby={describedBy("firstName")} onChange={() => clearError("firstName")} />{errorFor("firstName")}</div>
+          <div className="field"><label htmlFor="audition-middleName">Middle Name <span>(optional)</span></label><input id="audition-middleName" name="middleName" type="text" autoComplete="additional-name" placeholder="Middle name" maxLength={60} aria-invalid={!!errors.middleName} aria-describedby={describedBy("middleName")} onChange={() => clearError("middleName")} />{errorFor("middleName")}</div>
+          <div className="field"><label htmlFor="audition-lastName">Last Name <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-lastName" name="lastName" type="text" autoComplete="family-name" placeholder="Last name" maxLength={60} required aria-invalid={!!errors.lastName} aria-describedby={describedBy("lastName")} onChange={() => clearError("lastName")} />{errorFor("lastName")}</div>
+        </div>
         <div className={styles.fieldGrid}>
-          <div className="field"><label htmlFor="audition-name">Full name <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-name" name="name" type="text" autoComplete="name" placeholder="Your full name" maxLength={120} required aria-invalid={!!errors.name} aria-describedby={describedBy("name")} onChange={() => clearError("name")} />{errorFor("name")}</div>
-          <div className="field"><label htmlFor="audition-email">Email address <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-email" name="email" type="email" autoComplete="email" inputMode="email" placeholder="you@example.com" maxLength={254} required aria-invalid={!!errors.email} aria-describedby={describedBy("email")} onChange={() => clearError("email")} />{errorFor("email")}</div>
-          <div className="field"><label htmlFor="audition-phone">Phone number <span>(optional)</span></label><input id="audition-phone" name="phone" type="tel" autoComplete="tel" placeholder="Include your country code" maxLength={40} aria-invalid={!!errors.phone} aria-describedby={describedBy("phone")} onChange={() => clearError("phone")} />{errorFor("phone")}</div>
-          <div className="field"><label htmlFor="audition-location">City &amp; state / country <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-location" name="location" type="text" autoComplete="address-level2" placeholder="Where you’re based" maxLength={160} required aria-invalid={!!errors.location} aria-describedby={describedBy("location")} onChange={() => clearError("location")} />{errorFor("location")}</div>
+          <div className="field"><label htmlFor="audition-email">Email Address <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-email" name="email" type="email" autoComplete="email" inputMode="email" placeholder="you@example.com" maxLength={254} required aria-invalid={!!errors.email} aria-describedby={describedBy("email")} onChange={() => clearError("email")} />{errorFor("email")}</div>
+          <div className="field"><label htmlFor="audition-phone">Phone Number <span>(optional)</span></label><input id="audition-phone" name="phone" type="tel" autoComplete="tel" placeholder="Include your country code" maxLength={40} aria-invalid={!!errors.phone} aria-describedby={describedBy("phone")} onChange={() => clearError("phone")} />{errorFor("phone")}</div>
+        </div>
+        <div className={styles.tripleGrid}>
+          <div className="field"><label htmlFor="audition-city">City <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-city" name="city" type="text" autoComplete="address-level2" placeholder="City" maxLength={80} required aria-invalid={!!errors.city} aria-describedby={describedBy("city")} onChange={() => clearError("city")} />{errorFor("city")}</div>
+          <div className="field"><label htmlFor="audition-state">State / Province <span>(optional)</span></label><input id="audition-state" name="state" type="text" autoComplete="address-level1" placeholder="State or province" maxLength={80} aria-invalid={!!errors.state} aria-describedby={describedBy("state")} onChange={() => clearError("state")} />{errorFor("state")}</div>
+          <div className="field"><label htmlFor="audition-country">Country <span className={styles.required} aria-hidden="true">*</span></label><input id="audition-country" name="country" type="text" autoComplete="country-name" placeholder="Country" maxLength={80} required aria-invalid={!!errors.country} aria-describedby={describedBy("country")} onChange={() => clearError("country")} />{errorFor("country")}</div>
         </div>
       </section>
 
       <section className={styles.section} aria-labelledby="audition-performance-heading">
         <div className={styles.sectionHeading}><span aria-hidden="true">02</span><h3 id="audition-performance-heading">Your performance</h3></div>
         <fieldset className={styles.choiceGroup} aria-describedby={describedBy("disciplines", true)} aria-invalid={!!errors.disciplines}>
-          <legend>How do you perform? <span className={styles.required} aria-hidden="true">*</span></legend>
+          <legend>How Do You Perform? <span className={styles.required} aria-hidden="true">*</span></legend>
           <p className={styles.groupHint} id="audition-disciplines-hint">Select all that apply.</p>
           <div className={styles.disciplines}>{DISCIPLINES.map(item => <label className={styles.choice} key={item.value} htmlFor={`audition-discipline-${item.value}`}><input id={`audition-discipline-${item.value}`} type="checkbox" name="disciplines" value={item.value} aria-invalid={!!errors.disciplines} aria-describedby={describedBy("disciplines", true)} onChange={() => clearError("disciplines")} /><span>{item.label}</span></label>)}</div>
           {errorFor("disciplines")}
         </fieldset>
         <fieldset className={styles.choiceGroup} aria-describedby={describedBy("productions", true)} aria-invalid={!!errors.productions}>
-          <legend>Which productions interest you? <span className={styles.required} aria-hidden="true">*</span></legend>
+          <legend>Which Productions Interest You? <span className={styles.required} aria-hidden="true">*</span></legend>
           <p className={styles.groupHint} id="audition-productions-hint">You can select more than one.</p>
           <div className={styles.productions}>{PRODUCTIONS.map(item => <label className={styles.choice} key={item.value} htmlFor={`audition-production-${item.value}`}><input id={`audition-production-${item.value}`} type="checkbox" name="productions" value={item.value} aria-invalid={!!errors.productions} aria-describedby={describedBy("productions", true)} onChange={() => clearError("productions")} /><span>{item.label}</span></label>)}</div>
           {errorFor("productions")}
         </fieldset>
-        <div className="field"><label htmlFor="audition-experience">Experience &amp; special skills <span>(optional)</span></label><textarea id="audition-experience" name="experience" rows={4} maxLength={3000} placeholder="Tell us about your training, stage experience, vocal range, dance styles or instruments you play." aria-invalid={!!errors.experience} aria-describedby={describedBy("experience", true)} onChange={() => clearError("experience")} /><p className="field-hint" id="audition-experience-hint">Up to 3,000 characters.</p>{errorFor("experience")}</div>
+        <div className="field"><label htmlFor="audition-experience">Experience &amp; Special Skills <span>(optional)</span></label><textarea id="audition-experience" name="experience" rows={4} maxLength={3000} placeholder="Tell us about your training, stage experience, vocal range, dance styles or instruments you play." aria-invalid={!!errors.experience} aria-describedby={describedBy("experience", true)} onChange={() => clearError("experience")} /><p className="field-hint" id="audition-experience-hint">Up to 3,000 characters.</p>{errorFor("experience")}</div>
       </section>
 
       <section className={styles.section} aria-labelledby="audition-materials-heading">
@@ -226,12 +238,12 @@ export function AuditionForm() {
             {errorFor("resume")}
           </div>
         </div>
-        <div className="field"><label htmlFor="audition-videoUrl">Audition video or performance reel <span>(optional)</span></label><input id="audition-videoUrl" name="videoUrl" type="url" inputMode="url" autoComplete="url" placeholder="https://…" maxLength={2048} aria-invalid={!!errors.videoUrl} aria-describedby={describedBy("videoUrl", true)} onChange={() => clearError("videoUrl")} /><p className="field-hint" id="audition-videoUrl-hint">Share a video link the casting team can open without requesting access.</p>{errorFor("videoUrl")}</div>
+        <div className="field"><label htmlFor="audition-videoUrl">Audition Video or Performance Reel <span>(optional)</span></label><input id="audition-videoUrl" name="videoUrl" type="url" inputMode="url" autoComplete="url" placeholder="https://…" maxLength={2048} aria-invalid={!!errors.videoUrl} aria-describedby={describedBy("videoUrl", true)} onChange={() => clearError("videoUrl")} /><p className="field-hint" id="audition-videoUrl-hint">Share a video link the casting team can open without requesting access.</p>{errorFor("videoUrl")}</div>
       </section>
 
       <div className={styles.submitArea}>
         <div className="consent-wrapper"><label className="consent" htmlFor="audition-consent"><input id="audition-consent" name="consent" type="checkbox" required aria-invalid={!!errors.consent} aria-describedby={describedBy("consent")} onChange={() => clearError("consent")} /><span>{AUDITION_CONSENT_TEXT}</span></label>{errorFor("consent")}</div>
-        <button className="button button-gold submit-button" type="submit" disabled={isPending}><span>{isPending ? "Uploading & submitting…" : "Submit for consideration"}</span>{isPending ? <span className={styles.spinner} aria-hidden="true" /> : <Arrow />}</button>
+        <button className="button button-gold submit-button" type="submit" disabled={isPending}><span>{isPending ? "Uploading & Submitting…" : "Submit for Consideration"}</span>{isPending ? <span className={styles.spinner} aria-hidden="true" /> : <Arrow />}</button>
         <p className="form-footnote">Your details and materials are used for casting consideration. This submission does not add you to the marketing updates list.</p>
       </div>
     </fieldset>

@@ -7,7 +7,7 @@ import { AUDITION_CONSENT_TEXT, AUDITION_CONSENT_VERSION, AUDITION_ID_PATTERN, v
 const MAX_BODY_BYTES = 11 * 1024 * 1024;
 const SITE_ORIGIN = "https://james-brown-the-musical.jcormierpres-0628.chatgpt.site";
 const KNOWN_ORIGINS = [SITE_ORIGIN, "https://www.jamesbrownthemusical.com", "https://jamesbrownthemusical.com"];
-const scalarFields = ["name", "email", "phone", "location", "experience", "videoUrl", "consent", "submissionId"] as const;
+const scalarFields = ["firstName", "middleName", "lastName", "email", "phone", "city", "state", "country", "experience", "videoUrl", "consent", "submissionId"] as const;
 
 function reply(body: unknown, status = 200, headers: Record<string, string> = {}) {
   return Response.json(body, { status, headers: { "Cache-Control": "no-store", "X-Content-Type-Options": "nosniff", ...headers } });
@@ -153,7 +153,8 @@ export async function handleAudition(request: Request): Promise<Response> {
     const now = new Date().toISOString();
     insertAttempted = true;
     const inserted = await db.insert(auditions).values({
-      id: data.submissionId, name: data.name, email: data.email, phone: data.phone || null, location: data.location,
+      id: data.submissionId, firstName: data.firstName, middleName: data.middleName || null, lastName: data.lastName,
+      email: data.email, phone: data.phone || null, city: data.city, state: data.state || null, country: data.country,
       disciplines: data.disciplines, productions: data.productions, experience: data.experience || null, videoUrl: data.videoUrl || null,
       headshotKey, headshotName, headshotType, headshotSize: headshot.size,
       resumeKey, resumeName, resumeType, resumeSize: resume.size,

@@ -15,6 +15,34 @@
       "when": 1793225811785,
       "tag": "0001_young_luminals",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1793480350332,
+      "tag": "0002_split_audition_name_add",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "6",
+      "when": 1793480350726,
+      "tag": "0003_split_audition_name_drop",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "6",
+      "when": 1793480952753,
+      "tag": "0004_split_audition_location_add",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "6",
+      "when": 1793480953143,
+      "tag": "0005_split_audition_location_drop",
+      "breakpoints": true
     }
   ]
 }

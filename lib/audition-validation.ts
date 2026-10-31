@@ -22,21 +22,31 @@ export const AUDITION_ID_PATTERN = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab]
 export function validateAudition(values: Record<string, unknown>) {
   const errors: AuditionFieldErrors = {};
   const text = (name: string) => typeof values[name] === "string" ? (values[name] as string).trim() : "";
-  const name = text("name");
+  const firstName = text("firstName");
+  const middleName = text("middleName");
+  const lastName = text("lastName");
   const email = text("email").toLowerCase();
   const phone = text("phone");
-  const location = text("location");
+  const city = text("city");
+  const state = text("state");
+  const country = text("country");
   const experience = text("experience");
   let videoUrl = text("videoUrl");
   const submissionId = text("submissionId").toLowerCase();
   const consent = values.consent === true || values.consent === "on";
 
-  if (!name) errors.name = "Enter your full name.";
-  else if (name.length > 120) errors.name = "Use 120 characters or fewer.";
+  if (!firstName) errors.firstName = "Enter your first name.";
+  else if (firstName.length > 60) errors.firstName = "Use 60 characters or fewer.";
+  if (middleName.length > 60) errors.middleName = "Use 60 characters or fewer.";
+  if (!lastName) errors.lastName = "Enter your last name.";
+  else if (lastName.length > 60) errors.lastName = "Use 60 characters or fewer.";
   if (!email || email.length > 254 || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.email = "Enter a valid email address.";
   if (phone.length > 40) errors.phone = "Use 40 characters or fewer.";
-  if (!location) errors.location = "Enter your city and state or country.";
-  else if (location.length > 160) errors.location = "Use 160 characters or fewer.";
+  if (!city) errors.city = "Enter your city.";
+  else if (city.length > 80) errors.city = "Use 80 characters or fewer.";
+  if (state.length > 80) errors.state = "Use 80 characters or fewer.";
+  if (!country) errors.country = "Enter your country.";
+  else if (country.length > 80) errors.country = "Use 80 characters or fewer.";
   if (experience.length > 3000) errors.experience = "Keep your experience to 3,000 characters or fewer.";
   if (!AUDITION_ID_PATTERN.test(submissionId)) errors.submissionId = "Please refresh this page before submitting your materials.";
 
@@ -60,7 +70,7 @@ export function validateAudition(values: Record<string, unknown>) {
   }
   if (!consent) errors.consent = "Please agree to the use of your details and materials for casting consideration.";
 
-  return { errors, data: { name, email, phone, location, disciplines, productions, experience, videoUrl, consent, submissionId } };
+  return { errors, data: { firstName, middleName, lastName, email, phone, city, state, country, disciplines, productions, experience, videoUrl, consent, submissionId } };
 }
 
 export function validateAuditionFile(file: File | null, kind: AuditionMaterialKind): string | null {

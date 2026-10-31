@@ -8,6 +8,7 @@
 .sectionHeading > span { display:flex; align-items:center; justify-content:center; flex:0 0 33px; height:33px; border:1px solid #775034; border-radius:50%; color:#e8bd7c; font-size:10px; letter-spacing:.07em; }
 .sectionHeading > h3 { margin:0; color:#f1e6db; font-family:Arial,Helvetica,sans-serif; font-size:21px; font-weight:500; letter-spacing:-.025em; line-height:1.3; }
 .fieldGrid { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); column-gap:19px; }
+.tripleGrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); column-gap:19px; }
 .choiceGroup { border:0; margin:0 0 25px; padding:0; min-width:0; }
 .choiceGroup legend { padding:0; font-size:12px; font-weight:600; color:#e1d5cc; line-height:1.5; }
 .groupHint { margin:5px 0 12px; font-size:11px; color:#ac9d9c; line-height:1.5; }
@@ -57,7 +58,7 @@
   .sectionHeading { gap:11px; margin-bottom:23px; }
   .sectionHeading > h3 { font-size:20px; }
   .section { margin-bottom:27px; padding-bottom:8px; }
-  .fieldGrid { grid-template-columns:1fr; }
+  .fieldGrid, .tripleGrid { grid-template-columns:1fr; }
   .choice { padding:12px; min-height:47px; }
   .success { min-height:420px; padding-top:12px; }
   .success > p { font-size:13px; }
