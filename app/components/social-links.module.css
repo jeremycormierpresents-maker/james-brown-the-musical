@@ -1,0 +1,146 @@
+.social {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.7fr) minmax(0, 3fr);
+  align-items: center;
+  gap: 32px;
+  padding-top: 27px;
+  padding-bottom: 30px;
+  border-top: 1px solid #392a29;
+}
+
+.heading {
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  color: var(--gold);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.notice {
+  margin: 7px 0 0;
+  color: #aa9594;
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.links li {
+  min-width: 0;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 100%;
+  min-height: 69px;
+  padding: 13px;
+  border: 1px solid #47332e;
+  border-radius: 3px;
+  background: #171013;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.link:hover,
+.link:focus-visible {
+  border-color: #9c744b;
+  background: #29151a;
+}
+
+.icon {
+  display: flex;
+  flex: 0 0 31px;
+  align-items: center;
+  justify-content: center;
+  width: 31px;
+  height: 35px;
+  color: var(--gold);
+}
+
+.account {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.platform {
+  color: #eddfd1;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.handle {
+  color: #bea78f;
+  font-size: 10px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.external {
+  flex: 0 0 14px;
+  color: #b38a5d;
+}
+
+@media (max-width: 1100px) {
+  .social {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  .heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 5px 20px;
+  }
+
+  .notice {
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .social {
+    gap: 17px;
+    padding-top: 25px;
+    padding-bottom: 27px;
+  }
+
+  .links {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .link {
+    gap: 13px;
+    min-height: 67px;
+    padding: 12px 14px;
+  }
+
+  .platform {
+    font-size: 12px;
+  }
+
+  .handle {
+    font-size: 11px;
+  }
+}
